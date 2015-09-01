@@ -85,7 +85,7 @@ endif
 ifeq ($(USE_CAFFE_CONVERTER), 1)
 	BIN +=  bin/caffe_converter bin/caffe_mean_converter
 endif
-SLIB = wrapper/libcxxnetwrapper.so
+SLIB = wrapper/cxxnet_lib/libcxxnetwrapper.so
 OBJ = layer_cpu.o updater_cpu.o nnet_cpu.o main.o nnet_ps_server.o
 OBJCXX11 = data.o
 CUOBJ = layer_gpu.o  updater_gpu.o nnet_gpu.o
@@ -138,7 +138,7 @@ data.o: src/io/data.cpp src/io/*.hpp
 
 main.o: src/cxxnet_main.cpp
 
-wrapper/libcxxnetwrapper.so: wrapper/cxxnet_wrapper.cpp $(OBJ) $(OBJCXX11) $(LIB_DEP) $(CUDEP)
+wrapper/cxxnet_lib/libcxxnetwrapper.so: wrapper/cxxnet_wrapper.cpp $(OBJ) $(OBJCXX11) $(LIB_DEP) $(CUDEP)
 bin/cxxnet: src/local_main.cpp $(OBJ) $(OBJCXX11) $(LIB_DEP) $(CUDEP)
 bin/cxxnet.ps: $(OBJ) $(OBJCXX11) $(CUDEP) $(LIB_DEP) $(PS_PATH)/build/libps.a
 bin/im2rec: tools/im2rec.cc $(DMLC_CORE)/libdmlc.a

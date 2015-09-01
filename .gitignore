@@ -27,3 +27,6 @@ rabit
 *.cache
 *state
 *build
+
+dist/
+*.egg-info/
